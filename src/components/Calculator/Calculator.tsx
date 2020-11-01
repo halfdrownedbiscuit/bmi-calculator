@@ -179,7 +179,7 @@ const Calculator = () => {
         </div>
       </div>
       {isMobile && !isResultOpen ? (
-        <div className={styles.Requirements} onClick={calcBMI}>
+        <div className={styles.Requirements}>
           Fill Gender, Height and Weight then click Calculate
         </div>
       ) : null}
