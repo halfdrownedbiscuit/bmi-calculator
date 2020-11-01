@@ -147,16 +147,19 @@
   }
   .Requirements {
     @extend .ContentFont;
-    background: lightblue;
+    // background: #ddd;
     // position: fixed;
     // bottom: 0;
     // left: 0;
-    margin-top: 1rem;
-    font-size: 1rem;
+    // margin: 1rem;
+    font-size: 0.9rem;
     padding: 1rem 0.5rem;
+    box-shadow: 0 0 2px #ddd;
     text-align: center;
-    color: #090809 !important;
-    width: 100vw;
+    // color: #090809 !important;
+    width: calc(100vw - 3rem);
+    margin: 1rem;
+
   }
 }
 
