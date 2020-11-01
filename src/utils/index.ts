@@ -78,6 +78,8 @@ const getWeightChangeDirection = (bmi: string) => {
   const bmiVal = Number(bmi);
   if (bmiVal < 18.5) {
     return 'gain';
+  } else if (bmiVal <= 25) {
+    return '';
   } else {
     return 'lose';
   }

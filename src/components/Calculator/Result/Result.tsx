@@ -59,16 +59,20 @@ const Result = () => {
             {utils.getMaxNormalWeight(heightM, weightUnits)}
           </span>
           <br />
-          You should{' '}
-          <span className={styles.ContentHighlight}>
-            {utils.getWeightChangeDirection(bmi)}
-          </span>{' '}
-          atleast{' '}
-          <span className={styles.ContentHighlight}>
-            {utils.getWeightDifference(bmi, heightM, weightKg, weightUnits)}
-          </span>{' '}
-          to reach healthy weight
-          <br />
+          {utils.getWeightChangeDirection(bmi) === '' ? null : (
+            <>
+              You should{' '}
+              <span className={styles.ContentHighlight}>
+                {utils.getWeightChangeDirection(bmi)}
+              </span>{' '}
+              atleast{' '}
+              <span className={styles.ContentHighlight}>
+                {utils.getWeightDifference(bmi, heightM, weightKg, weightUnits)}
+              </span>{' '}
+              to reach healthy weight
+              <br />
+            </>
+          )}
         </span>
       </div>
       <div className={styles.Reference}>
