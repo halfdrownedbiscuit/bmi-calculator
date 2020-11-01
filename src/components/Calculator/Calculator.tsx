@@ -13,7 +13,10 @@ import {
   _weight,
   _weightKg,
   _weightUnits,
-  _bmi
+  _bmi,
+  _isResultOpen,
+  _canCalculate,
+  _isMobile
 } from 'store/atoms';
 import {
   FACTOR_FT_TO_CM,
@@ -36,6 +39,9 @@ const Calculator = () => {
   const [weight, setWeight] = useRecoilState(_weight);
   const weightKg = useRecoilValue(_weightKg);
   const [bmi, setBmi] = useRecoilState(_bmi);
+  const isMobile = useRecoilValue(_isMobile);
+  const [isResultOpen, setIsResultOpen] = useRecoilState(_isResultOpen);
+  const canCalculate = useRecoilValue(_canCalculate);
   //state
   //side-effs
   //local
@@ -57,17 +63,19 @@ const Calculator = () => {
   };
 
   const calcBMI = useCallback(() => {
+    if (!canCalculate) return;
     const bmiVal = weightKg / (heightM * heightM);
     setBmi(bmiVal.toFixed(2));
+    setIsResultOpen(true);
   }, [heightM, weightKg]);
 
   return (
     <div className={styles.Calculator}>
       {/* <div className={styles.Title}>BMI Calculator</div> */}
 
-      {/* <div className={styles.TitleBlock}>
+      <div className={styles.TitleBlock}>
         <div className={styles.Title}>BMI Calculator</div>
-      </div> */}
+      </div>
       <div className={styles.Genders}>
         <div
           className={getGenderClassName(isMale)}
@@ -106,6 +114,9 @@ const Calculator = () => {
               placeholder='5'
               value={heightFt}
               onChange={(e) => onValueChange(e, setHeightFt)}
+              style={{
+                width: '3rem'
+              }}
             />
             <div className={styles.UnitLabel}>
               <span>ft</span>
@@ -115,6 +126,9 @@ const Calculator = () => {
               placeholder='8'
               value={heightIn}
               onChange={(e) => onValueChange(e, setHeightIn)}
+              style={{
+                width: '3rem'
+              }}
             />
             <div className={styles.UnitLabel}>
               <span>in</span>
@@ -164,6 +178,11 @@ const Calculator = () => {
           Calculate
         </div>
       </div>
+      {isMobile && !isResultOpen ? (
+        <div className={styles.Requirements} onClick={calcBMI}>
+          Fill Gender, Height and Weight then click Calculate
+        </div>
+      ) : null}
     </div>
   );
 };

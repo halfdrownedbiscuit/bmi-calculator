@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "firebase-tools": "^8.14.1",
+    "global": "^4.4.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "recoil": "^0.0.13"

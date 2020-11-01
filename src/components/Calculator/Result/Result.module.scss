@@ -34,6 +34,9 @@
         border-radius: 5px;
       }
     }
+    .CloseResult {
+      @extend .ContentFont;
+    }
   }
 }
 
@@ -46,5 +49,32 @@
     box-shadow: 0 0 2px #333;
     padding: 1.5rem;
     font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .Result {
+    padding-top: 3rem;
+    overflow: hidden;
+    height: 100vh;
+    background: #eef4ed;
+    .InputPane {
+      width: 100%;
+    }
+    .AdditionalInfo {
+      // padding: 2rem;
+      margin: 1.5rem;
+    }
+    .CloseResult {
+      background: black;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      font-size: 1.2rem;
+      padding: 1rem 0.5rem;
+      text-align: center;
+      color: #eef4ed;
+      width: 100vw;
+    }
   }
 }

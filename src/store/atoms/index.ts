@@ -7,6 +7,16 @@ import {
 } from 'consts';
 import { atom, selector } from 'recoil';
 
+export const _isMobile = atom<boolean>({
+  key: '_isMobile',
+  default: window.innerWidth <= 800
+});
+
+export const _isResultOpen = atom<boolean>({
+  key: '_isResultOpen',
+  default: false
+});
+
 export const _gender = atom<string | null>({
   key: '_gender',
   default: null
@@ -75,4 +85,16 @@ export const _weight = atom<string>({
 export const _bmi = atom<string>({
   key: '_bmi',
   default: ''
+});
+
+export const _canCalculate = selector({
+  key: '_canCalculate',
+  get: ({ get }) => {
+    const weightKg = get(_weightKg);
+    const heightM = get(_heightM);
+    if(weightKg <= 0 || heightM <= 0){
+      return false;
+    }
+    return true;
+  }
 });

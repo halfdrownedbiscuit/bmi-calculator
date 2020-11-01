@@ -17,5 +17,25 @@
     @extend .FlexRow, .FlexJustifyCenter, .FlexAlignCenter;
     background: #eef4ed;
     width: 60%;
-  } 
+  }
+  .InfoPaneMobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .App {
+    overflow: hidden;
+    .InputPane {
+      width: 100%;
+    }
+    .InfoPane{
+      height: 100vh;
+      background: #eef4ed;
+    }
+  }
 }

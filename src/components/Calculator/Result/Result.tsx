@@ -1,9 +1,11 @@
 import React from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import {
   _bmi,
   _heightM,
   _heightUnits,
+  _isMobile,
+  _isResultOpen,
   _weightKg,
   _weightUnits
 } from 'store/atoms';
@@ -12,15 +14,28 @@ import utils from 'utils';
 import styles from './Result.module.scss';
 
 const Result = () => {
-  const bmi = useRecoilValue(_bmi);
+  const isMobile = useRecoilValue(_isMobile);
+  const [isResultOpen, setIsResultOpen] = useRecoilState(_isResultOpen);
+  const [bmi, setBmi] = useRecoilState(_bmi);
+
   const weightUnits = useRecoilValue(_weightUnits);
   const heightM = useRecoilValue(_heightM);
   const weightKg = useRecoilValue(_weightKg);
   const hasHeight = heightM > 0;
   const hasWeight = weightKg > 0;
 
-  if (bmi.length <= 0 || Number.isNaN(Number(bmi)) || !hasHeight || !hasWeight) {
-    return <Nothing hasHeight={hasHeight} hasWeight={hasWeight} />;
+  const closeResult = () => {
+    setIsResultOpen(false);
+    setBmi('');
+  };
+
+  if (
+    bmi.length <= 0 ||
+    Number.isNaN(Number(bmi)) ||
+    !hasHeight ||
+    !hasWeight
+  ) {
+    return <Nothing />;
   }
   return (
     <div className={styles.Result}>
@@ -62,22 +77,21 @@ const Result = () => {
           Wikipedia
         </a>
       </div>
+      {isMobile && isResultOpen ? (
+        <div className={styles.CloseResult} onClick={closeResult}>
+          Close
+        </div>
+      ) : null}
     </div>
   );
 };
 
-const Nothing = ({
-  hasHeight,
-  hasWeight
-}: {
-  hasHeight: boolean;
-  hasWeight: boolean;
-}) => {
+const Nothing = () => {
   return (
     <div className={styles.Nothing}>
       <div className={styles.FillSection}>
         Fill Gender, Height and Weight then click Calculate
-      </div> 
+      </div>
     </div>
   );
 };
