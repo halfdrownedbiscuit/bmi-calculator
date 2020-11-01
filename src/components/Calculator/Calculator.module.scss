@@ -1,0 +1,146 @@
+@import 'styles/_base.scss';
+
+.Calculator {
+  @extend .FlexColumn, .FlexJustifyStart;
+  height: 80%;
+  width: 75%;
+  .TitleBlock {
+    @extend .FlexRow, .FlexJustifyCenter, .FlexAlignCenter;
+    width: 100%;
+    .Title {
+      @extend .ContentFont;
+      color: #333;
+      font-size: 2rem;
+      background: #eee;
+      padding: 1.5rem;
+      box-shadow: 0 0 2px #111;
+      border-radius: 15px;
+      // border-bottom-right-radius: 15px;
+      // border-bottom-left-radius: 15px;
+    }
+  }
+  .Genders {
+    @extend .FlexRow;
+    justify-content: space-around;
+    margin-top: 3rem;
+    .Gender {
+      @extend .FlexColumn, .FlexJustifyCenter, .FlexAlignCenter;
+      box-shadow: 0 0 2px #ddd;
+      padding: 1.5rem 2.5rem;
+      border-radius: 10px;
+      cursor: pointer;
+      &:hover {
+        background: #333;
+      }
+      svg {
+        height: 3.5rem;
+        width: 3.5rem;
+      }
+      .GenderTitle {
+        @extend .TitleFont;
+        color: #ccc;
+        margin-top: 1.5rem;
+        text-align: center;
+        font-size: 1rem;
+      }
+    }
+    .SelectedGender {
+      background: #000;
+      &:hover {
+        background: #000;
+      }
+      .GenderTitle {
+        color: #eee;
+      }
+    }
+  }
+  .InputSection {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    row-gap: 2rem;
+    padding: 2rem 0;
+    .InputMeasure {
+      @extend .FlexRow, .FlexJustifyCenter, .FlexAlignCenter;
+      div {
+        @extend .ContentFont;
+        color: #666;
+        margin-left: 1rem;
+        font-size: 1.5rem;
+        cursor: pointer;
+        &:hover {
+          color: #888;
+        }
+      }
+      .SelectedUnits {
+        color: #eee;
+        &:hover {
+          color: #eee;
+        }
+      }
+    }
+    .InputValue {
+      @extend .FlexRow, .FlexJustifyCenter;
+      position: relative;
+      input {
+        @extend .ContentFont;
+        margin-left: 1rem;
+        width: 7rem;
+        outline: none;
+        border: 1px solid #888;
+        background: transparent;
+        border-radius: 30px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-right-color: transparent;
+        padding: 1rem 0.5rem;
+        text-align: center;
+        font-size: 1.3rem;
+        &:focus {
+          border-color: #ccc;
+        }
+        &::placeholder {
+          color: #444;
+        }
+      }
+      /* Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      /* Firefox */
+      input[type='number'] {
+        -moz-appearance: textfield;
+      }
+      .UnitLabel {
+        @extend .FlexColumn, .FlexJustifyCenter;
+        border: 1px solid #888;
+        border-top-right-radius: 50px;
+        border-bottom-right-radius: 50px;
+        span {
+          @extend .ContentFont;
+          color: #ddd;
+          font-size: 1rem;
+          padding: 0 1rem;
+        }
+      }
+    }
+  }
+  .Actions {
+    @extend .FlexRow, .FlexJustifyCenter, .NoUserSelect;
+    margin-top: 2rem;
+    .CalcAction {
+      @extend .TitleFont;
+      background: #eef4ed;
+      font-size: 1.5rem;
+      color: #090809;
+      border-radius: 50px;
+      padding: 1rem 1.5rem;
+      cursor: pointer;
+      &:hover {
+        box-shadow: 0 0 3px #fff;
+      }
+    }
+  }
+}

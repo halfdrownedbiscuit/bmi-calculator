@@ -1,0 +1,50 @@
+@import 'styles/_base.scss';
+
+.Result {
+  * {
+    @extend .ContentFont;
+    text-align: center;
+  }
+  .BMI {
+    font-size: 4rem;
+  }
+  .Verdict {
+    margin-top: 1rem;
+    font-size: 2rem;
+  }
+  .AdditionalInfo {
+    @extend .FlexColumn, .FlexJustifyCenter, .FlexAlignCenter, .ContentFont;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 2px #888;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    .VerdictTitle {
+      font-size: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+    .VerdictContent {
+      text-align: left !important;
+      line-height: 3rem;
+      .ContentHighlight {
+        // font-size: 1.5rem;
+        padding: 7px;
+        background: #777;
+        color: white;
+        border-radius: 5px;
+      }
+    }
+  }
+}
+
+.Nothing {
+  @extend .FlexColumn, .FlexJustifyCenter, .FlexAlignCenter, .ContentFont;
+  font-size: 2rem;
+  .FillSection {
+    @extend .FlexColumn, .FlexJustifyCenter, .FlexAlignCenter, .ContentFont;
+    // border: 1px solid #ddd;
+    box-shadow: 0 0 2px #333;
+    padding: 1.5rem;
+    font-size: 1.5rem;
+  }
+}

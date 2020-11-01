@@ -1,0 +1,21 @@
+@import 'styles/base';
+
+.App {
+  @extend .FlexRow, .FlexJustifyStart;
+  width: 100vw;
+  height: 100vh;
+  .InputPane {
+    // background: #090809;
+    background: #230c33;
+    width: 50%;
+    @extend .FlexRow, .FlexJustifyCenter, .FlexAlignCenter;
+    * {
+      color: #eee;
+    }
+  }
+  .InfoPane {
+    @extend .FlexRow, .FlexJustifyCenter, .FlexAlignCenter;
+    background: #eef4ed;
+    width: 60%;
+  } 
+}

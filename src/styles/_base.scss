@@ -1,0 +1,52 @@
+.TitleFont {
+  // font-family: 'Quicksand', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.ContentFont {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.Flex {
+  display: flex;
+}
+
+.FlexRow {
+  @extend .Flex;
+  flex-direction: row; // redundant
+}
+
+.FlexColumn {
+  @extend .Flex;
+  flex-direction: column;
+}
+
+.FlexJustifyStart {
+  justify-content: flex-start;
+}
+
+.FlexJustifyCenter {
+  justify-content: center;
+}
+
+.FlexJustifyEnd {
+  justify-content: flex-end;
+}
+
+.FlexAlignStart {
+  align-items: flex-start;
+}
+
+.FlexAlignCenter {
+  align-items: center;
+}
+
+.FlexAlignEnd {
+  align-items: flex-end;
+}
+
+.NoUserSelect {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
