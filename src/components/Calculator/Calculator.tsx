@@ -26,6 +26,7 @@ import {
   HEIGHT_UNITS,
   WEIGHT_UNITS
 } from 'consts';
+import Status from './Status';
 
 const Calculator = () => {
   //store
@@ -49,6 +50,9 @@ const Calculator = () => {
   const isFemale = gender === GENDER.FEMALE;
   const isFtIn = heightUnits === HEIGHT_UNITS.FT;
   const isKgs = weightUnits === WEIGHT_UNITS.KG;
+  const hasGender = useRecoilValue(_gender) != null;
+  const hasHeight = heightM > 0;
+  const hasWeight = weightKg > 0;
 
   const onValueChange = (
     event: ChangeEvent<HTMLInputElement>,
@@ -179,9 +183,11 @@ const Calculator = () => {
         </div>
       </div>
       {isMobile && !isResultOpen ? (
-        <div className={styles.Requirements}>
-          Fill Gender, Height and Weight then click Calculate
-        </div>
+        <Status
+          hasGender={hasGender}
+          hasHeight={hasHeight}
+          hasWeight={hasWeight}
+        />
       ) : null}
     </div>
   );

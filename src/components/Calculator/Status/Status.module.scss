@@ -1,0 +1,46 @@
+@import 'styles/_base.scss';
+
+.Status {
+  @extend .FlexColumn, .FlexJustifyCenter, .FlexAlignCenter, .ContentFont;
+  font-size: 2rem;
+  .FillSection {
+    @extend .FlexColumn, .FlexJustifyCenter, .FlexAlignCenter, .ContentFont;
+    display: inline;
+    // border: 1px solid #ddd;
+    box-shadow: 0 0 1px #333;
+    border-radius: 15px;
+    padding: 2rem;
+    // background: orangered;
+    color: #333;
+    font-size: 1rem;
+    .ToFill {
+      display: inline;
+      color: orangered;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .Status {
+    // position: fixed;
+    // bottom: 0rem;
+    width: calc(100vw - 2rem);
+    font-size: 1rem;
+    // padding: 0.5rem;
+    margin: 1rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    // background: #ddd;
+    .FillSection {
+      padding: 0rem;
+      // background: orangered;
+      color: #ddd !important;
+      box-shadow: none;
+      font-size: 1rem;
+      .ToFill {
+        display: inline;
+        color: orangered;
+      }
+    }
+  }
+}
